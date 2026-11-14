@@ -1,0 +1,35 @@
+{
+  "uid": "universallinks",
+  "type": "app",
+  "config": {
+    "description": "Track Hubspot leads/deal changes as conversions on Universal Links – the modern link attribution platform.",
+    "name": "Universal Links",
+    "distribution": "marketplace",
+    "auth": {
+      "type": "oauth",
+      "redirectUrls": [
+        "https://app.universallinks.co/api/hubspot/callback",
+        "https://preview.universallinks.co/api/hubspot/callback"
+      ],
+      "requiredScopes": [
+        "oauth",
+        "crm.objects.contacts.read",
+        "crm.objects.contacts.write",
+        "crm.objects.deals.read",
+        "crm.schemas.contacts.write"
+      ],
+      "optionalScopes": [],
+      "conditionallyRequiredScopes": []
+    },
+    "permittedUrls": {
+      "fetch": ["https://api.hubapi.com"],
+      "iframe": [],
+      "img": []
+    },
+    "support": {
+      "supportEmail": "support@universallinks.co",
+      "documentationUrl": "https://universallinks.co/docs/conversions/hubspot",
+      "supportUrl": "https://universallinks.co/contact"
+    }
+  }
+}

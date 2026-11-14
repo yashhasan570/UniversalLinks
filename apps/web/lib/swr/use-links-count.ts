@@ -1,0 +1,48 @@
+import { useRouterStuff } from "@universallinks/ui";
+import { fetcher } from "@universallinks/utils";
+import useSWR from "swr";
+import * as z from "zod/v4";
+import { getLinksCountQuerySchema } from "../zod/schemas/links";
+import useWorkspace from "./use-workspace";
+
+const partialQuerySchema = getLinksCountQuerySchema.partial();
+
+export default function useLinksCount<T = any>({
+  query,
+  ignoreParams,
+  enabled = true,
+}: {
+  query?: z.infer<typeof partialQuerySchema>;
+  ignoreParams?: boolean;
+  enabled?: boolean;
+} = {}) {
+  const { id: workspaceId, isMegaWorkspace } = useWorkspace();
+  const { getQueryString } = useRouterStuff();
+
+  const { data, error } = useSWR<any>(
+    workspaceId && !isMegaWorkspace && enabled
+      ? `/api/links/count${getQueryString(
+          {
+            workspaceId,
+            ...query,
+          },
+          ignoreParams
+            ? { include: [] }
+            : {
+                exclude: ["import", "upgrade", "newLink"],
+              },
+        )}`
+      : null,
+    fetcher,
+    {
+      dedupingInterval: 60000,
+      keepPreviousData: true,
+    },
+  );
+
+  return {
+    data: data as T,
+    loading: !error && data === undefined,
+    error,
+  };
+}
