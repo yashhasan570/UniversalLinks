@@ -1,21 +1,103 @@
-# Universal Links
+<a href="https://universallinks.co">
+  <img alt="Universal Links is the modern, open-source link attribution platform for short links and conversion tracking." src="https://github.com/user-attachments/assets/42cf0705-f5a2-4200-bc4a-c5acf0ba9e15">
+</a>
 
-Modern link management infrastructure: short links, QR codes, analytics, and branded domains for teams and individuals.
+<h3 align="center">Universal Links Links</h3>
 
-## Features
+<p align="center">
+    The open-source link attribution platform.
+    <br />
+    <a href="https://universallinks.co/links"><strong>Learn more »</strong></a>
+    <br />
+    <br />
+    <a href="#introduction"><strong>Introduction</strong></a> ·
+    <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
+    <a href="#self-hosting"><strong>Self-hosting</strong></a> ·
+    <a href="#contributing"><strong>Contributing</strong></a>
+</p>
 
-- Short links with custom domains, QR codes, and deep links
-- Click analytics (geolocation, device, browser, referrer)
-- Workspaces with granular roles and permissions
-- REST API, webhooks, OAuth apps, and MCP support
-- Stripe and HubSpot integrations
+<p align="center">
+  <a href="https://twitter.com/dubdotco">
+    <img src="https://img.shields.io/twitter/follow/dubdotco?style=flat&label=%40dubdotco&logo=twitter&color=0bf&logoColor=fff" alt="Twitter" />
+  </a>
+  <a href="https://news.ycombinator.com/item?id=32939407"><img src="https://img.shields.io/badge/Hacker%20News-255-%23FF6600" alt="Hacker News"></a>
+  <a href="https://github.com/yashhasan570/UniversalLinks/blob/main/LICENSE.md">
+    <img src="https://img.shields.io/github/license/yashhasan570/UniversalLinks?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
+  </a>
+</p>
 
-## Install
+<br/>
 
-- Web app: `pnpm install && pnpm build` in the monorepo (Next.js app in `apps/web`), needs a Postgres database and Redis
-- CLI: `pnpm build` in `packages/cli`
-- Configuration is environment-based (see `.env.example` in `apps/web`)
+## Introduction
 
-## Contact
+[Universal Links Links](https://universallinks.co/links) is the modern, open-source link attribution platform for [short links](https://universallinks.co/links) and [conversion tracking](https://universallinks.co/analytics).
 
-Telegram: [@johnconstantine570](https://t.me/johnconstantine570)
+Our platform powers 250M+ clicks and 12M+ links monthly, and is used by world-class engineering teams at Twilio, Zillow, Jobber, Vercel, Raycast, and [more](https://universallinks.co/customers).
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) – framework
+- [TypeScript](https://www.typescriptlang.org/) – language
+- [Tailwind](https://tailwindcss.com/) – CSS
+- [Prisma](https://www.prisma.io/) – ORM
+- [Upstash](https://upstash.com/) – redis
+- [Tinybird](https://tinybird.com/) – analytics
+- [PlanetScale](https://planetscale.com/) – database
+- [NextAuth.js](https://next-auth.js.org/) – auth
+- [BoxyHQ](https://boxyhq.com/enterprise-sso) – SAML/SSO
+- [Turborepo](https://turbo.build/repo) – monorepo
+- [Stripe](https://stripe.com/) – payments
+- [Resend](https://resend.com/) – emails
+- [Vercel](https://vercel.com/) – deployments
+
+## Self-Hosting
+
+You can self-host Universal Links for greater control over your data and design. [Read this guide](https://universallinks.co/docs/self-hosting/guide) to learn more.
+
+## Contributing
+
+We love our contributors! Here's how you can contribute:
+
+- [Open an issue](https://github.com/yashhasan570/UniversalLinks/issues) if you believe you've encountered a bug.
+- Follow the [local development guide](https://universallinks.co/docs/local-development) to get your local dev environment set up.
+- Make a [pull request](https://github.com/yashhasan570/UniversalLinks/pull) to add new features/make quality-of-life improvements/fix bugs.
+
+### Recommended Versions
+
+| Package | Version  |
+| ------- | -------- |
+| node    | v23.11.0 |
+| pnpm    | 9.15.9   |
+
+### Common Local Development Issues
+
+- `The table <table-name> does not exist in the current database.` - Run `pnpm prisma:push` push the state of the Prisma schema file to the database without using migrations files.
+- The project is not building correctly locally - verify your versions of `node` and `pnpm` match the recommended versions above. Delete all `node_modules`, `.next`, and `.turbo` directories in the `apps` and `packages` directory. You may now reinstall `node_modules` by running `pnpm install` and attempt to rebuild the project with `pnpm build`.
+
+### Dev Seed Script
+
+This script seeds the database with development data for testing and development purposes.
+
+**Basic seeding (adds data without deleting existing data):**
+
+```bash
+cd apps/web
+pnpm run script dev/seed
+```
+
+**Truncate database before seeding (deletes all existing data first):**
+
+```bash
+cd apps/web
+pnpm run script dev/seed --truncate
+```
+
+When using `--truncate`, the script will ask for confirmation before deleting any data.
+
+## Repo Activity
+
+![Universal Links repo activity – generated by Axiom](https://repobeats.axiom.co/api/embed/6ac4c94a89ea20e2e10032b932a128b6d8442e66.svg "Repobeats analytics image")
+
+## License
+
+Universal Links Technologies, Inc. is a commercial open-source company, which means some parts of this open-source repository require a commercial license. The concept is called "Open Core" where the core technology (99%) is fully open source, licensed under [AGPLv3](https://opensource.org/license/agpl-v3) and the last 1% is covered under a commercial license (["/ee" Enterprise Edition](<https://github.com/yashhasan570/UniversalLinks/tree/ee/apps/web/app/(ee)>)) which we believe is entirely relevant for larger organisations that require enterprise features. Enterprise features are built by the core engineering team of Universal Links Technologies, Inc., which is hired full-time.
